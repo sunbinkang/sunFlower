@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- NavGraph 路线箭头指向 == navGraph -->
+<!-- 主要是有三个 Fragment/fragment -->
+<!-- 总司令：箭头指向 多个Fragment -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/garden_fragment"> <!-- 我的花园默认 -->
+
+
+    <!--<fragment
+        android:id="@+id/testFragment"
+        android:name="com.google.samples.apps.sunflower.test.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" />-->
+
+    <!-- 【Fragment1 我的花园】 【打开APP所展示的 默认首页Fragment】 -->
+    <fragment
+        android:id="@+id/garden_fragment"
+        android:name="com.kang.sunflower.fragment.GardenFragment"
+        android:label="@string/my_garden_title"
+        tools:layout="@layout/fragment_garden">
+
+        <!-- 这个需要指定 各个Fragment 路线指定跳转动作 才会有，后面会讲 -->
+        <!--<action
+            android:id="@+id/action_garden_fragment_to_plant_detail_fragment"
+            app:destination="@id/plant_detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />-->
+
+    </fragment>
+
+    <!-- 【Fragment2 植物目录】植物目录的Fragment -->
+    <!-- 【Fragment2 植物目录】 -->
+    <fragment
+        android:id="@+id/plant_list_fragment"
+        android:name="com.kang.sunflower.fragment.PlantListFragment"
+        android:label="@string/plant_list_title"
+        tools:layout="@layout/fragment_plant_list">
+
+        <!--<action
+            android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"
+            app:destination="@id/plant_detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />-->
+
+    </fragment>
+
+</navigation>

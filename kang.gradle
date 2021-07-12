@@ -1,0 +1,42 @@
+// 扩展快
+ext {
+
+    // 现在 Gradle
+    // 正式环境 和 测试环境
+    isRelease = false
+
+    // 正式环境 和 测试环境 服务器 URL 配置
+    url = [
+            "debug"  : "https://192.188.22.99/debug",
+            "release": "https://192.188.22.99/release"
+    ]
+
+    // 建立Map存储，  key 和 value  都是自定义的
+    androidID = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.3",
+
+            minSdkVersion    : 23,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : "1.0",
+
+    ]
+
+    // 建立Map存储，  key 和 value  都是自定义的
+    appID = [
+            app: "com.kang.sunflower"
+    ]
+
+    // 300 行  MAP  key  value
+    dependenciesID = [
+            "appcompat"       : "androidx.appcompat:appcompat:1.2.0",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.0.1",
+            "material"        : "com.google.android.material:material:1.1.0",
+            "vectordrawable"  : "androidx.vectordrawable:vectordrawable:1.1.0",
+            "fragment"        : "androidx.navigation:navigation-fragment:2.2.2",
+            "ui"              : "androidx.navigation:navigation-ui:2.2.2",
+            "extensions"      : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+    ]
+
+}

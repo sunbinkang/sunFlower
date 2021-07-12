@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SunFlower</string>
+    <string name="navigation_drawer_header_title" translatable="false">Sunflower</string>
+    <string name="my_garden_title">My Garden</string>
+    <string name="plant_list_title" translation_description="Title for the plant list screen where the user can see a list of plants available to add to their garden.">Plant list</string>
+    <string name="menu_item_share_plant" translation_description="The label for the Share menu item">Share</string>
+    <string name="menu_filter_by_grow_zone" translation_description="The label for the menu item to filter the displayed plants by grow zone.">Filter by grow zone</string>
+    <string name="garden_empty" translation_description="Text that is shown on the 'My Garden' screen when no plants have been added to the user's garden">Your garden is empty</string>
+</resources>

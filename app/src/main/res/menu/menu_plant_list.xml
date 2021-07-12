@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   植物目录：点击右上角 会重新随机查询展示
+ -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/filter_zone"
+        android:icon="@drawable/ic_filter_list_24dp"
+        app:showAsAction="always"
+        android:title="@string/menu_filter_by_grow_zone"/>
+
+</menu>

@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.application'
+}
+
+// 完整的方式  性能
+def androidID = rootProject.ext.androidID
+
+android {
+    compileSdkVersion androidID.compileSdkVersion
+    buildToolsVersion androidID.buildToolsVersion
+
+    defaultConfig {
+        applicationId appID.app
+        minSdkVersion androidID.minSdkVersion
+        targetSdkVersion androidID.targetSdkVersion
+        versionCode androidID.versionCode
+        versionName androidID.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 让我的Java代码也可以用
+        // 给Java代码暴漏，标记，正式环境 和 测试环境 的标记
+        // 组件化 和 集成化 的时候需要
+        buildConfigField("boolean", "isRelease", String.valueOf(isRelease))
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "debug", "\"${url.debug}\"")
+        }
+        release {
+            buildConfigField("String", "release", "\"${url.release}\"")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // 一行搞定300行 循环搞定
+    dependenciesID.each {k,v -> implementation v}
+
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.1'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

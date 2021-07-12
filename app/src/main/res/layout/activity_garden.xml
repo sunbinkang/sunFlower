@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  这个就是 默认首页要使用的 布局
+  此布局 已经交给了DataBinding进行了管理
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--
+                标题栏
+                    同学们注意：配合Toolbar有收缩和扩展的效果
+                不熟悉的同学，看看：https://www.jianshu.com/p/bbc703a0015e
+            -->
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <!-- 【此fragment 就是导航的目标 靠它就分散 各个Fragment碎片的】
+                  app:defaultNavHost="true" == 就可以拦截到 back键了
+             -->
+            <!-- 这句话：就是navGraph 相当于 总司令，发布命令到各个Fragment == app:navGraph="@navigation/nav_garden" -->
+            <!--  -->
+            <fragment
+                android:id="@+id/garden_nav_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_garden" />
+
+        </LinearLayout>
+        <!--
+           导航视图(NavigationView)通常与抽屉布局(DrawerLayout)结合使用,实现了良好的侧滑交互体验。从常规开发来说，侧滑一般都是左侧实现侧滑
+           具体详情，同学们看看：http://www.tianqiweiqi.com/android-advanced-2-2-5-navigationview.html
+        -->
+        <!-- 左边测窗体 app:headerLayout="@layout/nav_header" -->
+        <!-- app:menu="@menu/menu_navigation" 植物列表，我的花园 就是靠这两个菜单选项设定的 -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            style="@style/Widget.MaterialComponents.NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/menu_navigation" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

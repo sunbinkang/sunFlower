@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+         [我的花园 按钮]
+         此 garden_fragment 关联 nav_garden.xml 的 【Fragment1 我的花园】
+    -->
+    <item
+        android:id="@+id/garden_fragment"
+        android:title="@string/my_garden_title" />
+
+    <!--
+         [植物目录 按钮]
+         此 plant_list_fragment 关联 nav_garden.xml 的 【Fragment2 植物目录】
+    -->
+    <item
+        android:id="@+id/plant_list_fragment"
+        android:title="@string/plant_list_title" />
+
+</menu>
