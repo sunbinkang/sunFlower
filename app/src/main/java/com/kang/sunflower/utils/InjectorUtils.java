@@ -5,7 +5,9 @@ import android.content.Context;
 import com.kang.sunflower.data.AppDatabase;
 import com.kang.sunflower.data.GardenPlantingDao;
 import com.kang.sunflower.data.GardenPlantingRepository;
+import com.kang.sunflower.data.PlantRepository;
 import com.kang.sunflower.viewmodels.GardenPlantingListViewModelFactory;
+import com.kang.sunflower.viewmodels.PlantListViewModelFactory;
 
 
 /**
@@ -37,4 +39,18 @@ public class InjectorUtils {
     }
 
 
+    // 获取 植物 仓库
+    private static PlantRepository getPlantRepository(Context context) {
+        // AppDatabase.getInstance == (数据初始化的起点) 开始执行了，往 plant表里面插入数据
+        return PlantRepository.getInstance(AppDatabase.getInstance(context.getApplicationContext()).getPlantDao());
+    }
+
+    // 暴漏 植物列表ViewModel  的  工厂
+    public static PlantListViewModelFactory providePlantListViewModelFactory(Context context) {
+
+        // 仓库
+        PlantRepository plantRepository = getPlantRepository(context);
+
+        return new PlantListViewModelFactory(plantRepository);
+    }
 }

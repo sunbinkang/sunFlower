@@ -44,10 +44,10 @@
                   app:defaultNavHost="true" == 就可以拦截到 back键了
              -->
             <!-- 这句话：就是navGraph 相当于 总司令，发布命令到各个Fragment == app:navGraph="@navigation/nav_garden" -->
-            <!--  -->
+            <!-- android:name="androidx.navigation.fragment.NavHostFragment" 替换自己的NavHostFragment-->
             <fragment
                 android:id="@+id/garden_nav_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:name="com.kang.sunflower.navigation.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"

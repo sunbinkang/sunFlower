@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kang.sunflower.R;
 import com.kang.sunflower.data.PlantAndGardenPlantings;
 import com.kang.sunflower.databinding.ListItemGardenPlantingBinding;
+import com.kang.sunflower.viewmodels.PlantAndGardenPlantingsViewModel;
 
 /**
  * Created by BinKang on 2021/7/12.
  * Des :
  */
-public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, RecyclerView.ViewHolder> {
+public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder> {
 
     public GardenPlantingAdapter() {
         super(new GardenPlantDiffCallback());
@@ -26,15 +27,16 @@ public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, 
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GardenPlantingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.list_item_garden_planting, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GardenPlantingAdapter.ViewHolder holder, int position) {
         PlantAndGardenPlantings item = getItem(position);
         holder.itemView.setTag(item);
+        holder.bindData(item);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -43,6 +45,11 @@ public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, 
         public ViewHolder(@NonNull ListItemGardenPlantingBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        public void bindData(PlantAndGardenPlantings item) {
+            this.binding.setViewModel(new PlantAndGardenPlantingsViewModel(item));
+            this.binding.executePendingBindings();
         }
     }
 

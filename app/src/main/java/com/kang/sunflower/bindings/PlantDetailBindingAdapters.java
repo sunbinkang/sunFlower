@@ -7,6 +7,8 @@ import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
+import com.kang.sunflower.R;
 
 /**
  * Created by BinKang on 2021/7/13.
@@ -26,6 +28,7 @@ public class PlantDetailBindingAdapters {
         if (!TextUtils.isEmpty(imageUrl)) {
             Glide.with(view.getContext())
                     .load(imageUrl)
+                    .apply(new RequestOptions().error(R.drawable.ic_launcher_background))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(view);
         }

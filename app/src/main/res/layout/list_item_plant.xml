@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  植物目录 RecyclerView 的 item 布局
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <!-- 此监听被 下面的  ConstraintLayout 关联绑定，当点击ConstraintLayout时，会触发到 PlantAdapter.ViewHolder.bind -->
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="plant"
+            type="com.kang.sunflower.data.Plant"/>
+
+        <!-- data 里面，并不是 只能写 VM  -->
+        <!--<variable
+            name="click"
+            type="com.google.samples.apps.sunflower.fragments.PlantListFragment.Click" />-->
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{click}">
+
+        <!--<Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@${()->click.show()}"
+            />-->
+
+        <!-- 植物目录 item 的图片 -->
+        <ImageView
+            android:id="@+id/plant_item_image"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/plant_item_image_height"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_small"
+            android:contentDescription="@string/a11y_plant_item_image"
+            android:scaleType="centerCrop"
+            app:imageFromUrl="@{plant.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- 植物目录 item 的图片文字 -->
+        <TextView
+            android:id="@+id/plant_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{plant.name}"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/plant_item_image"
+            tools:text="Tomato"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
