@@ -7,6 +7,7 @@
          此 garden_fragment 关联 nav_garden.xml 的 【Fragment1 我的花园】
     -->
     <item
+        android:icon="@drawable/ic_share"
         android:id="@+id/garden_fragment"
         android:title="@string/my_garden_title" />
 
@@ -15,6 +16,7 @@
          此 plant_list_fragment 关联 nav_garden.xml 的 【Fragment2 植物目录】
     -->
     <item
+        android:icon="@mipmap/ic_launcher"
         android:id="@+id/plant_list_fragment"
         android:title="@string/plant_list_title" />
 

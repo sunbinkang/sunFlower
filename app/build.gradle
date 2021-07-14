@@ -52,6 +52,11 @@ dependencies {
     // 一行搞定300行 循环搞定
     dependenciesID.each {k,v -> implementation v}
 
+    implementation "androidx.room:room-runtime:2.1.0"
+    annotationProcessor "androidx.room:room-compiler:2.1.0"
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.9.0"
+
 //    implementation 'androidx.appcompat:appcompat:1.2.0'
 //    implementation 'com.google.android.material:material:1.2.1'
 //    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
