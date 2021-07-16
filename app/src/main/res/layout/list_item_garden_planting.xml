@@ -11,7 +11,7 @@
 
         <!-- 用户点击 图片与文本 所触发的事件 -->
         <variable
-            name="clickListener"
+            name="listener"
             type="android.view.View.OnClickListener"/>
 
         <!-- 图片与文本 信息显示的ViewModel -->
@@ -24,7 +24,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{clickListener}">
+        android:onClick="@{listener}">
 
         <!-- item 的图片显示 -->
         <ImageView

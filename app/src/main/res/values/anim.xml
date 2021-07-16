@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   动画需要的 数值
+  -->
+
+<!-- Values used for animations -->
+<resources>
+
+    <!-- Duration (in milliseconds) for slide transition animation -->
+    <integer name="slide">200</integer>
+</resources>

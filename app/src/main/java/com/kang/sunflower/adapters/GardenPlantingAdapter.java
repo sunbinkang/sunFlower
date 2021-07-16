@@ -1,7 +1,9 @@
 package com.kang.sunflower.adapters;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -36,7 +38,16 @@ public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, 
     public void onBindViewHolder(@NonNull GardenPlantingAdapter.ViewHolder holder, int position) {
         PlantAndGardenPlantings item = getItem(position);
         holder.itemView.setTag(item);
-        holder.bindData(item);
+        holder.bindData(item, createOnClickListener(item.getPlant().getPlantId()));
+    }
+
+    private View.OnClickListener createOnClickListener(String plantId) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("item", "onClick: 你点击了我的花园列表的Item，plantId:" + plantId);
+            }
+        };
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -47,8 +58,9 @@ public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, 
             this.binding = binding;
         }
 
-        public void bindData(PlantAndGardenPlantings item) {
+        public void bindData(PlantAndGardenPlantings item, View.OnClickListener onClickListener) {
             this.binding.setViewModel(new PlantAndGardenPlantingsViewModel(item));
+            this.binding.setListener(onClickListener);
             this.binding.executePendingBindings();
         }
     }

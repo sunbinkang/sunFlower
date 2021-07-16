@@ -44,4 +44,8 @@ public class PlantRepository {
         return this.plantDao.getPlantsWithGrowZoneNumber(growZoneNumber);
     }
 
+    // 根据条件plantId查询 plantDao数据库 的所有 植物目录数据 （单个）
+    public LiveData<Plant> getPlant(String plantId) {
+        return this.plantDao.getPlant(plantId);
+    }
 }

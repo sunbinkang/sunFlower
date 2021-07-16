@@ -2,6 +2,8 @@ package com.kang.sunflower.data;
 
 import androidx.lifecycle.LiveData;
 
+import com.kang.sunflower.utils.AppExecutors;
+
 import java.util.List;
 
 /**
@@ -46,8 +48,23 @@ public class GardenPlantingRepository {
      */
     public LiveData<List<PlantAndGardenPlantings>> getPlantAndGardenPlantings() {
         return gardenPlantingDao.getPlantAndGardenPlantings(); // 获取数据库了
-
-
     }
 
+    // 【这就是数据进入的入口】
+    // 在植物介绍详情页  用户点击 + 号的时候， 加入到 我的花园GardenPlantings Room数据库里面去
+    // 插入一条 我的花园数据 进去到Room数据库
+    public void createGardenPlanting(String plantId) {
+        AppExecutors.getInstance().diskIO().execute(() ->
+                // 植物 insert 插入进去
+                gardenPlantingDao.insertGardenPlanting(new GardenPlanting(plantId, null, null)));
+    }
+
+    /**
+     * Room的dao--->plantId条件查询 我的花园数据（单个）
+     * @param plantId
+     * @return
+     */
+    public LiveData<GardenPlanting> getGardenPlantingForPlant(String plantId) {
+        return gardenPlantingDao.getGardenPlantingForPlant(plantId);
+    }
 }
